@@ -33,12 +33,14 @@
         }
 
         .logo-container { margin-bottom: 25px; display: flex; justify-content: center; }
-.main-logo {
-    width: 600px; /* Atur angka ini sesuka hati untuk memperbesar logo (contoh: 400px, 500px, atau 600px) */
-    max-width: none; /* Kunci utamanya: HAPUS batasan maksimalnya! */
-    height: auto;
-    filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.3));
-}
+        
+        /* Pengaturan logo yang sudah diperbesar sebelumnya */
+        .main-logo { 
+            width: 600px; 
+            max-width: none; 
+            height: auto; 
+            filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.3)); 
+        }
 
         .featured-img {
             width: 100%; height: 250px;
@@ -73,14 +75,7 @@
 
         .btn-primary:hover { background: #ffffff; transform: scale(1.02); }
 
-        #pdf-container {
-            display: none; margin-bottom: 20px; width: 100%; height: 400px;
-            border-radius: 20px; overflow: hidden; border: 1px solid rgba(125, 211, 252, 0.3);
-            background: #ffffff;
-        }
-
-        iframe { width: 100%; height: 100%; border: none; }
-        
+        /* Style untuk Footer (Nomor Admin) */
         .footer { margin-top: 40px; font-size: 0.85rem; color: #94a3b8; letter-spacing: 1px; line-height: 1.6; }
         .footer span { color: #7dd3fc; font-weight: 600; font-size: 0.9rem; }
         .footer-copyright { font-size: 0.7rem; margin-top: 8px; color: #64748b; }
@@ -98,11 +93,7 @@
     <h2>Layanan & Harga</h2>
     <p class="description">Abadikan momen terbaik Anda bersama kami.</p>
 
-    <button class="btn-action" onclick="togglePDF()" id="btn-pdf">LIHAT PRICE LIST (PDF)</button>
-
-    <div id="pdf-container">
-        <iframe src="BYALFARISY_PLWEDDING2026.pdf"></iframe>
-    </div>
+    <a href="BYALFARISY_PLWEDDING2026.pdf" target="_blank" class="btn-action">LIHAT PRICE LIST (PDF)</a>
 
     <a href="#" class="btn-link">INSTAGRAM</a>
     <a href="#" class="btn-link">TIKTOK</a>
@@ -110,24 +101,9 @@
     <a href="booking.html" class="btn-primary">BOOKING SEKARANG</a>
 
     <div class="footer">
-        <p>Admin WA: <span>0812-3456-7890</span></p> <p class="footer-copyright">© 2026 ALFARISY. All Rights Reserved.</p>
+        <p class="footer-copyright">© 2026 ALFARISY. All Rights Reserved.</p>
     </div>
 </div>
-
-<script>
-    function togglePDF() {
-        var pdfBox = document.getElementById("pdf-container");
-        var btnPdf = document.getElementById("btn-pdf");
-
-        if (pdfBox.style.display === "none" || pdfBox.style.display === "") {
-            pdfBox.style.display = "block";
-            btnPdf.innerHTML = "TUTUP PRICE LIST";
-        } else {
-            pdfBox.style.display = "none";
-            btnPdf.innerHTML = "LIHAT PRICE LIST (PDF)";
-        }
-    }
-</script>
 
 </body>
 </html>
