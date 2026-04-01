@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALFARISY - Form Booking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #0f172a 0%, #000000 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(125, 211, 252, 0.3);
+            border-radius: 40px;
+            width: 100%;
+            max-width: 500px; 
+            padding: 40px 30px;
+            text-align: left;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Style Logo ditambahkan ke halaman booking */
+        .logo-container { 
+            margin-bottom: 25px; 
+            display: flex; 
+            justify-content: center; 
+        }
+        
+        .main-logo { 
+            width: 600px; /* Anda bisa ubah angka ini untuk membesarkan/mengecilkan logo */
+            max-width: none; 
+            height: auto; 
+            filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.3)); 
+        }
+
+        h2 { font-size: 1.6rem; margin-bottom: 10px; color: #ffffff; text-align: center; }
+        .description { font-size: 0.85rem; margin-bottom: 30px; color: #cbd5e1; font-weight: 300; text-align: center; }
+
+        .form-group { margin-bottom: 15px; }
+        
+        label { display: block; margin-bottom: 6px; font-size: 0.85rem; color: #7dd3fc; }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.3);
+            color: #ffffff;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus { border-color: #7dd3fc; background: rgba(0,0,0,0.5); }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        .btn-send {
+            background: #7dd3fc;
+            color: #000000;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .btn-send:hover { background: #ffffff; transform: scale(1.02); }
+
+        .divider {
+            display: flex; align-items: center; text-align: center; margin: 25px 0 15px 0; color: #cbd5e1; font-size: 0.85rem; font-weight: 300;
+        }
+        .divider::before, .divider::after {
+            content: ''; flex: 1; border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .divider:not(:empty)::before { margin-right: 15px; }
+        .divider:not(:empty)::after { margin-left: 15px; }
+
+        .btn-link {
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; padding: 16px; margin-bottom: 25px;
+            border: 1.5px solid #ffffff; border-radius: 50px;
+            background: transparent; color: #ffffff;
+            text-decoration: none; font-weight: 600; font-size: 0.85rem;
+            letter-spacing: 1.5px; transition: all 0.4s ease; text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .btn-link:hover {
+            background: #25D366; 
+            border-color: #25D366; color: #ffffff;
+            transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        }
+
+        /* Tombol Kembali pindah ke bawah, margin disesuaikan */
+        .back-btn {
+            display: flex;
+            width: fit-content;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .back-btn:hover { 
+            background: #7dd3fc;
+            border-color: #7dd3fc;
+            color: #000000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(125, 211, 252, 0.2);
+        }
+
+        .footer { margin-top: 30px; font-size: 0.85rem; color: #94a3b8; letter-spacing: 1px; line-height: 1.6; text-align: center; }
+        .footer span { color: #7dd3fc; font-weight: 600; font-size: 0.9rem; }
+        .footer-copyright { font-size: 0.7rem; margin-top: 8px; color: #64748b; }
+    </style>
+</head>
+<body>
+
+<div class="main-card">
+    <div class="logo-container">
+        <img src="logo.png" alt="ALFARISY PHOTO WORKS" class="main-logo">
+    </div>
+
+    <h2>Form Booking</h2>
+    <p class="description">Lengkapi data di bawah ini untuk reservasi jadwal foto Anda.</p>
+
+    <div class="form-group">
+        <label>Nama kedua mempelai :</label>
+        <input type="text" id="mempelai" placeholder="Contoh: Andi & Rina" required>
+    </div>
+
+    <div class="form-group">
+        <label>No Handphone / Whatsapp :</label>
+        <input type="tel" id="whatsapp" placeholder="Contoh: 08123456789" required>
+    </div>
+
+    <div class="form-group">
+        <label>Pilihan package :</label>
+        <input type="text" id="package" placeholder="Contoh: Wedding Package Premium" required>
+    </div>
+
+    <div class="form-group">
+        <label>Tanggal acara :</label>
+        <input type="date" id="tanggal" required>
+    </div>
+
+    <div class="form-group">
+        <label>Lokasi acara :</label>
+        <textarea id="lokasi" placeholder="Masukkan alamat lengkap / nama gedung" rows="3" required></textarea>
+    </div>
+
+    <button class="btn-send" onclick="kirimWA()">KIRIM DETAIL BOOKING</button>
+
+    <div class="divider">ATAU</div>
+
+    <a href="https://wa.me/628123456789" target="_blank" class="btn-link">TANYA ADMIN (WHATSAPP)</a>
+
+    <a href="halaman.html" class="back-btn">&#8592; KEMBALI KE BERANDA</a>
+
+    <div class="footer">
+    <p class="footer-copyright">© 2026 ALFARISY. All Rights Reserved.</p>
+    </div>
+</div>
+
+<script>
+    function kirimWA() {
+        const mempelai = document.getElementById('mempelai').value;
+        const whatsapp = document.getElementById('whatsapp').value;
+        const paket = document.getElementById('package').value;
+        const tanggal = document.getElementById('tanggal').value;
+        const lokasi = document.getElementById('lokasi').value;
+
+        // GANTI DENGAN NOMOR WA ANDA
+        const nomorAdmin = "628123456789"; 
+
+        if (!mempelai || !whatsapp || !paket || !tanggal || !lokasi) {
+            alert("Mohon lengkapi semua data formulir sebelum mengirim pesan.");
+            return;
+        }
+
+        const teks = `Halo ALFARISY, saya ingin booking layanan fotografi:\n\n` +
+                     `*Nama kedua mempelai :* ${mempelai}\n` +
+                     `*No Handphone / Whatsapp :* ${whatsapp}\n` +
+                     `*Pilihan package :* ${paket}\n` +
+                     `*Tanggal acara :* ${tanggal}\n` +
+                     `*Lokasi acara :* ${lokasi}`;
+
+        const url = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(teks)}`;
+        
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
