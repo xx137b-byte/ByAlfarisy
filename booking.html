@@ -7,17 +7,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* 1. Tambahkan kode ini di baris paling atas setelah <style> */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Mengunci total geseran horizontal */
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at center, #0f172a 0%, #000000 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ffffff;
-        }
+/* 2. Sesuaikan body Anda menjadi seperti ini */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at center, #0f172a 0%, #000000 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #ffffff;
+    position: relative; /* Membantu mengunci layout */
+}
 
         .main-card {
             background: rgba(255, 255, 255, 0.05);
@@ -188,7 +197,7 @@
 
     <div class="divider">ATAU</div>
 
-    <a href="https://wa.me/62895355510902" target="_blank" class="btn-link">TANYA ADMIN (WHATSAPP)</a>
+    <a href="https://wa.me/628123456789" target="_blank" class="btn-link">TANYA ADMIN (WHATSAPP)</a>
 
     <a href="halaman.html" class="back-btn">&#8592; KEMBALI KE BERANDA</a>
 
