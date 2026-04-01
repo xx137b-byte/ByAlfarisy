@@ -17,7 +17,7 @@ body {
     align-items: center;
     padding: 20px;
     color: #ffffff;
-    overflow-x: hidden; /* Tambahkan ini agar layar tidak bisa digeser ke kiri/kanan */
+    overflow-x: hidden; /* KUNCI LAYOUT: Mencegah layar bisa digeser ke kiri/kanan */
 }
 
         .main-card {
@@ -35,13 +35,19 @@ body {
 
         .logo-container { margin-bottom: 25px; display: flex; justify-content: center; }
         
-        /* Pengaturan logo yang sudah diperbesar sebelumnya */
-        .main-logo { 
-            width: 600px; 
-            max-width: none; 
-            height: auto; 
-            filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.3)); 
-        }
+.main-logo {
+    width: 100%; 
+    max-width: 350px; /* Ukuran dasar yang aman untuk ruang HP */
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.3));
+    
+    /* KUNCI UTAMANYA: Membesarkan visual logo hingga 180% atau lebih */
+    transform: scale(1.9); 
+    
+    /* Menambah ruang kosong ekstra agar saat logo membesar, tidak menabrak batas atas atau teks di bawahnya */
+    margin-top: 40px; 
+    margin-bottom: 50px;
+}
 
         .featured-img {
             width: 100%; height: 250px;
