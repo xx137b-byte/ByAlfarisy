@@ -7,6 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Menghilangkan kotak biru bawaan browser saat tombol/link diklik */
+        a, button, div {
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
         /* 1. Tambahkan kode ini di baris paling atas setelah <style> */
 html, body {
     max-width: 100%;
