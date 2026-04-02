@@ -6,19 +6,15 @@
     <title>ALFARISY - Form Booking</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        /* Menghilangkan kotak biru bawaan browser saat tombol/link diklik */
-        a, button, div {
-            -webkit-tap-highlight-color: transparent;
-            outline: none;
-      /* 1. Kunci warna dasar layar menjadi hitam agar tidak ada putih bocor di bawah */
+        /* Pastikan kode ini berada tepat di bawah tag <style> atau di bawah * { margin:0; ... } */
+        
         html {
-            background-color: #000000; 
+            background-color: #000000;
         }
 
         html, body {
             max-width: 100%;
-            overflow-x: hidden; 
+            overflow-x: hidden;
             margin: 0;
             padding: 0;
         }
@@ -26,13 +22,8 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: radial-gradient(circle at center, #0f172a 0%, #000000 100%);
-            
-            /* 2. Gunakan dvh agar tinggi layar presisi dengan browser HP */
-            min-height: 100dvh; 
-            
-            /* 3. Kunci background agar tidak terangkat saat Anda men-scroll form ke bawah */
-            background-attachment: fixed; 
-            
+            min-height: 100dvh;
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -40,6 +31,13 @@
             color: #ffffff;
             position: relative;
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Menghilangkan kotak biru bawaan browser saat tombol/link diklik */
+        a, button, div {
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            }
+            
         .main-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
