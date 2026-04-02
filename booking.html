@@ -156,6 +156,50 @@ body {
         .footer { margin-top: 30px; font-size: 0.85rem; color: #94a3b8; letter-spacing: 1px; line-height: 1.6; text-align: center; }
         .footer span { color: #7dd3fc; font-weight: 600; font-size: 0.9rem; }
         .footer-copyright { font-size: 0.7rem; margin-top: 8px; color: #64748b; }
+    /* Style untuk Kotak Term & Condition */
+        .tnc-box {
+            background: rgba(0, 0, 0, 0.3); /* Latar belakang lebih gelap agar teks mudah dibaca */
+            border: 1px solid rgba(125, 211, 252, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            text-align: left; /* Teks rata kiri agar rapi untuk dibaca */
+        }
+
+        /* Khusus untuk judul Term & Condition agar persis seperti gambar */
+        .tnc-box h3 {
+            font-family: 'Georgia', 'Times New Roman', serif; /* Menggunakan font klasik berukir */
+            font-style: italic; /* Membuat hurufnya miring */
+            font-size: 1.6rem; /* Ukuran agak dibesarkan sedikit agar proporsional */
+            color: #7dd3fc; /* Mengubah warnanya menjadi putih seperti di gambar */
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: normal; /* Dibuat normal (tidak tebal/bold) seperti di gambar */
+            letter-spacing: 1px;
+            text-transform: none; 
+        }
+        .tnc-subtitle {
+            color: #ffffff; /* Warna teks putih bersih */
+            font-size: 0.8rem; /* Ukuran teks agak kecil */
+            text-align: center; /* Rata tengah mengikuti judulnya */
+            margin-top: -5px; /* Menaikkan sedikit agar menempel dengan judul Term & Condition */
+            margin-bottom: 15px; /* Jarak ke teks bullet point di bawahnya */
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .tnc-box ul {
+            padding-left: 20px; /* Memberi jarak untuk bullet point */
+            color: #cbd5e1;
+        }
+
+        .tnc-box li {
+            font-size: 0.75rem; /* Ukuran font agak kecil agar tidak makan tempat */
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
     </style>
 </head>
 <body>
@@ -192,6 +236,21 @@ body {
         <label>Lokasi acara :</label>
         <textarea id="lokasi" placeholder="Masukkan alamat lengkap / nama gedung" rows="3" required></textarea>
     </div>
+   <div class="tnc-box">
+        <h3>Term & Condition</h3>
+        
+        <p class="tnc-subtitle">Booking & Payment</p>
+        
+        <ul>
+            <li>Konsultasikan tanggal wedding mu dengan kami. Untuk booking tanggal diperlukan DP (Down Payment) sebesar 20% dari total harga paket yang diambil.</li>
+            <li>Pelunasan pembayaran maksimal H-2 sebelum pemotretan.</li>
+            <li>Booking jadwal akan tervalidasi setelah bukti pembayaran DP (Down Payment) dikirimkan.</li>
+            <li>Untuk couple session, harga yang tertera belum termasuk biaya lainnya, seperti retribusi, tiket, studio rent, izin lokasi dan konsumsi selama pemotretan.</li>
+            <li>Tidak diperkenankan downgrade paket yang telah dipesan.</li>
+            <li>Jika terjadi pembatalan dari pihak client, pembayaran yang telah dilakukan tidak dapat dikembalikan.</li>
+            <li>Dengan melakukan booking/pemesanan, klien menyetujui semua terms & conditions yang berlaku.</li>
+        </ul>
+    </div>
 
     <button class="btn-send" onclick="kirimWA()">KIRIM DETAIL BOOKING</button>
 
@@ -199,7 +258,7 @@ body {
 
     <a href="https://wa.me/628123456789" target="_blank" class="btn-link">TANYA ADMIN (WHATSAPP)</a>
 
-    <a href="halaman.html" class="back-btn">&#8592; KEMBALI KE BERANDA</a>
+    <a href="index.html" class="back-btn">&#8592; KEMBALI KE BERANDA</a>
 
     <div class="footer">
     <p class="footer-copyright">© 2026 ALFARISY. All Rights Reserved.</p>
@@ -229,7 +288,7 @@ body {
                      `*Tanggal acara :* ${tanggal}\n` +
                      `*Lokasi acara :* ${lokasi}`;
 
-        const url = `https://wa.me/${62895355510902}?text=${encodeURIComponent(teks)}`;
+        const url = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(teks)}`;
         
         window.open(url, '_blank');
     }
