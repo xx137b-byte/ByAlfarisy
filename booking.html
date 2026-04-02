@@ -11,7 +11,10 @@
         a, button, div {
             -webkit-tap-highlight-color: transparent;
             outline: none;
-       }
+      /* 1. Kunci warna dasar layar menjadi hitam agar tidak ada putih bocor di bawah */
+        html {
+            background-color: #000000; 
+        }
 
         html, body {
             max-width: 100%;
@@ -37,7 +40,6 @@
             color: #ffffff;
             position: relative;
         }
-
         .main-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
