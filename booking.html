@@ -370,7 +370,7 @@ body {
 
     <div class="divider">ATAU</div>
 
-    <a href="https://wa.me/62895355510902" target="_blank" class="btn-link">TANYA ADMIN (WHATSAPP)</a>
+    <a href="https://wa.me/628123456789" target="_blank" class="btn-link">TANYA ADMIN (WHATSAPP)</a>
 
     <a href="index.html" class="back-btn">&#8592; KEMBALI KE BERANDA</a>
 
@@ -386,22 +386,9 @@ body {
         const paket = document.getElementById('package').value;
         const tanggal = document.getElementById('tanggal').value;
         const lokasi = document.getElementById('lokasi').value;
-        // 1. Mengambil nilai Package
-    let selectedPackage = document.getElementById("package").value;
-
-    // 2. Mengumpulkan semua Add-ons yang dicentang
-    let addonsArray = [];
-    let checkedAddons = document.querySelectorAll('input[name="addons"]:checked');
-    
-    checkedAddons.forEach((checkbox) => {
-        addonsArray.push(checkbox.value);
-    });
-
-    // Jika ada yang dicentang, gabungkan dengan koma. Jika tidak, tulis "Tidak ada"
-    let addonsText = addonsArray.length > 0 ? addonsArray.join(', ') : 'Tidak ada';
 
         // GANTI DENGAN NOMOR WA ANDA
-        const nomorAdmin = "62895355510902"; 
+        const nomorAdmin = "628123456789"; 
 
         if (!mempelai || !whatsapp || !paket || !tanggal || !lokasi) {
             alert("Mohon lengkapi semua data formulir sebelum mengirim pesan.");
@@ -415,7 +402,7 @@ body {
                      `*Tanggal acara :* ${tanggal}\n` +
                      `*Lokasi acara :* ${lokasi}`;
 
-        const url = `https://wa.me/${62895355510902}?text=${encodeURIComponent(teks)}`;
+        const url = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(teks)}`;
         
         window.open(url, '_blank');
     }
