@@ -381,27 +381,41 @@ body {
 
 <script>
     function kirimWA() {
+        // 1. Mengambil data dari form teks dan dropdown
         const mempelai = document.getElementById('mempelai').value;
         const whatsapp = document.getElementById('whatsapp').value;
         const paket = document.getElementById('package').value;
         const tanggal = document.getElementById('tanggal').value;
         const lokasi = document.getElementById('lokasi').value;
 
-        // GANTI DENGAN NOMOR WA ANDA
-        const nomorAdmin = "628123456789"; 
+        // 2. MENGAMBIL DATA ADD-ONS (KODE BARU)
+        const checkedAddons = document.querySelectorAll('input[name="addons"]:checked');
+        let addonsArray = [];
+        checkedAddons.forEach((checkbox) => {
+            addonsArray.push(checkbox.value);
+        });
+        // Jika ada yang dicentang, gabungkan. Jika kosong, tulis "Tidak ada"
+        const addonsText = addonsArray.length > 0 ? addonsArray.join(', ') : 'Tidak ada';
 
+        // Nomor WA Admin
+        const nomorAdmin = "62895355510902"; 
+
+        // 3. Validasi form (Add-ons tidak ikut divalidasi karena opsional)
         if (!mempelai || !whatsapp || !paket || !tanggal || !lokasi) {
             alert("Mohon lengkapi semua data formulir sebelum mengirim pesan.");
             return;
         }
 
+        // 4. Merangkai pesan WhatsApp (Menambahkan baris Add-ons)
         const teks = `Halo ALFARISY, saya ingin booking layanan fotografi:\n\n` +
                      `*Nama kedua mempelai :* ${mempelai}\n` +
                      `*No Handphone / Whatsapp :* ${whatsapp}\n` +
                      `*Pilihan package :* ${paket}\n` +
+                     `*Add-ons Tambahan :* ${addonsText}\n` +   /* BARIS BARU DI SINI */
                      `*Tanggal acara :* ${tanggal}\n` +
                      `*Lokasi acara :* ${lokasi}`;
 
+        // 5. Mengirim pesan (Saya rapikan sedikit menggunakan variabel nomorAdmin)
         const url = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(teks)}`;
         
         window.open(url, '_blank');
