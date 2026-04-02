@@ -7,26 +7,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        /* 1. Tambahkan kode ini di baris paling atas setelah <style> */
-html, body {
-    max-width: 100%;
-    overflow-x: hidden; /* Mengunci total geseran horizontal */
-    margin: 0;
-    padding: 0;
-}
+        
+        /* Mengunci total geseran horizontal */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden; 
+            margin: 0;
+            padding: 0;
+        }
 
-/* 2. Sesuaikan body Anda menjadi seperti ini */
-body {
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at center, #0f172a 0%, #000000 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    color: #ffffff;
-    position: relative; /* Membantu mengunci layout */
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #0f172a 0%, #000000 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #ffffff;
+            position: relative; /* Membantu mengunci layout */
+        }
 
         .main-card {
             background: rgba(255, 255, 255, 0.05);
@@ -43,19 +43,12 @@ body {
 
         .logo-container { margin-bottom: 25px; display: flex; justify-content: center; }
         
-.main-logo {
-    width: 100%; 
-    max-width: 350px; /* Ukuran dasar yang aman untuk ruang HP */
-    height: auto;
-    filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.3));
-    
-    /* KUNCI UTAMANYA: Membesarkan visual logo hingga 180% atau lebih */
-    transform: scale(1.9); 
-    
-    /* Menambah ruang kosong ekstra agar saat logo membesar, tidak menabrak batas atas atau teks di bawahnya */
-    margin-top: 40px; 
-    margin-bottom: 50px;
-}
+         .main-logo { 
+            width: 700px; /* Anda bisa ubah angka ini untuk membesarkan/mengecilkan logo */
+            max-width: none; 
+            height: auto; 
+            filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.3)); 
+        }
 
         .featured-img {
             width: 100%; height: 250px;
@@ -90,10 +83,26 @@ body {
 
         .btn-primary:hover { background: #ffffff; transform: scale(1.02); }
 
-        /* Style untuk Footer (Nomor Admin) */
-        .footer { margin-top: 40px; font-size: 0.85rem; color: #94a3b8; letter-spacing: 1px; line-height: 1.6; }
-        .footer span { color: #7dd3fc; font-weight: 600; font-size: 0.9rem; }
-        .footer-copyright { font-size: 0.7rem; margin-top: 8px; color: #64748b; }
+        /* Style untuk Footer (Nomor Admin & Copyright) */
+        .footer { 
+            margin-top: 40px; 
+            text-align: center; 
+        }
+        
+        .footer-contact {
+            font-size: 0.65rem; /* Dikecilkan sedikit agar muat di layar HP */
+            color: #cbd5e1;
+            letter-spacing: 0.5px; /* Jarak huruf dirapatkan sedikit */
+            margin-bottom: 5px;
+            white-space: nowrap; /* PERINTAH KUNCI: Memaksa teks lurus ke samping tanpa turun baris */
+        }
+        
+        .footer-copyright { 
+            font-size: 0.7rem; 
+            margin-top: 20px; 
+            color: #64748b; 
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
@@ -110,12 +119,14 @@ body {
 
     <a href="BYALFARISY_PLWEDDING2026.pdf" target="_blank" class="btn-action">LIHAT PRICE LIST (PDF)</a>
 
-    <a href="#" class="btn-link">INSTAGRAM</a>
-    <a href="#" class="btn-link">TIKTOK</a>
+    <a href="https://www.instagram.com/byalfarisy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn-link">INSTAGRAM</a>
+    <a href="https://www.tiktok.com/@byalfarisy?is_from_webapp=1&sender_device=pc" class="btn-link">TIKTOK</a>
 
     <a href="booking.html" class="btn-primary">BOOKING SEKARANG</a>
 
     <div class="footer">
+        <p class="footer-contact">Banjarbaru, Kalimantan Selatan</p>
+        <p class="footer-contact">@byalfarisy | 087833054739 (anggi) | byalfarisywedding@gmail.com</p>
         <p class="footer-copyright">© 2026 ALFARISY. All Rights Reserved.</p>
     </div>
 </div>
