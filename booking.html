@@ -12,35 +12,26 @@
             -webkit-tap-highlight-color: transparent;
             outline: none;
         }
-     /* 1. Tambahkan warna hitam dasar di tag html agar tidak ada putih yang bocor */
-        html {
-            background-color: #000000; 
-        }
+        /* 1. Tambahkan kode ini di baris paling atas setelah <style> */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Mengunci total geseran horizontal */
+    margin: 0;
+    padding: 0;
+}
 
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden; 
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at center, #0f172a 0%, #000000 100%);
-            
-            /* 2. Ubah vh menjadi dvh (Dynamic Viewport Height) untuk menyesuaikan layar HP otomatis */
-            min-height: 100dvh; 
-            
-            /* 3. Kunci background agar tidak ikut tergulung habis saat di-scroll */
-            background-attachment: fixed; 
-            
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ffffff;
-            position: relative;
-        }
+/* 2. Sesuaikan body Anda menjadi seperti ini */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at center, #0f172a 0%, #000000 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #ffffff;
+    position: relative; /* Membantu mengunci layout */
+}
 
         .main-card {
             background: rgba(255, 255, 255, 0.05);
@@ -72,8 +63,73 @@
         h2 { font-size: 1.6rem; margin-bottom: 10px; color: #ffffff; text-align: center; }
         .description { font-size: 0.85rem; margin-bottom: 30px; color: #cbd5e1; font-weight: 300; text-align: center; }
 
-        .form-group { margin-bottom: 15px; }
-        
+       /* Gaya untuk pembungkus form */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            width: 100%;
+        }
+
+        /* Gaya untuk label judul (Pilihan Package & Add-ons) */
+        .form-group label {
+            display: block;
+            color: #7dd3fc;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* Gaya untuk kotak Dropdown Package */
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(125, 211, 252, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Warna background saat dropdown dibuka (agar teks tetap terbaca) */
+        .form-control option, 
+        .form-control optgroup {
+            background-color: #0f172a; 
+            color: #ffffff;
+        }
+
+        /* Gaya untuk kotak pembungkus Add-ons */
+        .addons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(125, 211, 252, 0.15);
+        }
+
+        /* Gaya untuk teks dan checkbox Add-ons */
+        .addon-item {
+            display: flex;
+            align-items: center;
+            color: #cbd5e1 !important; /* Warna abu-abu terang */
+            font-size: 0.85rem !important;
+            cursor: pointer;
+            margin: 0 !important; /* Mereset margin label bawaan */
+        }
+
+        /* Mewarnai kotak checkbox dengan aksen biru */
+        .addon-item input[type="checkbox"] {
+            margin-right: 12px;
+            accent-color: #7dd3fc;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
         label { display: block; margin-bottom: 6px; font-size: 0.85rem; color: #7dd3fc; }
 
         input, textarea {
@@ -235,11 +291,55 @@
         <label>No Handphone / Whatsapp :</label>
         <input type="tel" id="whatsapp" placeholder="Contoh: 08123456789" required>
     </div>
+<div class="form-group">
+            <label for="package">Pilihan Package</label>
+            <select id="package" name="package" class="form-control" required>
+                <option value="" disabled selected>-- Pilih Package Anda --</option>
+                
+                <optgroup label="ONE DAY WEDDING PHOTO - VIDEO PACKAGE">
+                    <option value="Wedding - Intimate">INTIMATE</option>
+                    <option value="Wedding - Majestic">MAJESTIC</option>
+                    <option value="Wedding - Royal">ROYAL</option>
+                    <option value="Wedding - Grande">GRANDE</option>
+                </optgroup>
 
-    <div class="form-group">
-        <label>Pilihan package :</label>
-        <input type="text" id="package" placeholder="Contoh: Wedding Package Premium" required>
-    </div>
+                <optgroup label="COUPLE SESSION (Foto)">
+                    <option value="Couple Foto - Basic">Basic</option>
+                    <option value="Couple Foto - Standart">Standart</option>
+                </optgroup>
+
+                <optgroup label="COUPLE SESSION (Video)">
+                    <option value="Couple Video - Basic">Basic</option>
+                    <option value="Couple Video - Standart">Standart</option>
+                </optgroup>
+
+                <optgroup label="COUPLE SESSION (Foto & Video)">
+                    <option value="Couple Foto&Video - Basic">Basic</option>
+                    <option value="Couple Foto&Video - Standart">Standart</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Add-ons (Opsional)</label>
+            <div class="addons-container">
+                <label class="addon-item">
+                    <input type="checkbox" name="addons" value="Same Day Edit Video"> Same Day Edit Video
+                </label>
+                <label class="addon-item">
+                    <input type="checkbox" name="addons" value="Drone"> Drone
+                </label>
+                <label class="addon-item">
+                    <input type="checkbox" name="addons" value="Portable Studio"> Portable Studio
+                </label>
+                <label class="addon-item">
+                    <input type="checkbox" name="addons" value="Transportasi & Akomodasi"> Transportasi & Akomodasi
+                </label>
+                <label class="addon-item">
+                    <input type="checkbox" name="addons" value="Extra Day"> Extra Day
+                </label>
+            </div>
+        </div>
 
     <div class="form-group">
         <label>Tanggal acara :</label>
@@ -288,7 +388,7 @@
         const lokasi = document.getElementById('lokasi').value;
 
         // GANTI DENGAN NOMOR WA ANDA
-        const nomorAdmin = "628123456789"; 
+        const nomorAdmin = "62895355510902"; 
 
         if (!mempelai || !whatsapp || !paket || !tanggal || !lokasi) {
             alert("Mohon lengkapi semua data formulir sebelum mengirim pesan.");
