@@ -32,11 +32,12 @@
             position: relative;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         /* Menghilangkan kotak biru bawaan browser saat tombol/link diklik */
         a, button, div {
             -webkit-tap-highlight-color: transparent;
             outline: none;
-            }
+        }
             
         .main-card {
             background: rgba(255, 255, 255, 0.05);
@@ -59,7 +60,7 @@
         }
         
         .main-logo { 
-            width: 600px; /* Anda bisa ubah angka ini untuk membesarkan/mengecilkan logo */
+            width: 600px;
             max-width: none; 
             height: auto; 
             filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.3)); 
@@ -85,26 +86,104 @@
             font-weight: 500;
         }
 
-        /* Gaya untuk kotak Dropdown Package */
-        .form-control {
+        /* --- GAYA CUSTOM DROPDOWN MULAI --- */
+        .custom-dropdown-container {
+            position: relative;
             width: 100%;
-            padding: 12px;
+        }
+
+        .select-trigger {
+            width: 100%;
+            padding: 12px 15px;
             border-radius: 8px;
             border: 1px solid rgba(125, 211, 252, 0.3);
             background: rgba(0, 0, 0, 0.3);
             color: #ffffff;
-            font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
-            outline: none;
             cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
-        /* Warna background saat dropdown dibuka (agar teks tetap terbaca) */
-        .form-control option, 
-        .form-control optgroup {
-            background-color: #0f172a; 
+        .select-trigger .arrow {
+            border: solid rgba(125, 211, 252, 0.7);
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 3px;
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+        }
+
+        .custom-select.open .select-trigger {
+            border-color: #7dd3fc;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .custom-select.open .select-trigger .arrow {
+            transform: rotate(-135deg);
+        }
+
+        .custom-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 8px;
+            background: #0f172a; 
+            border: 1px solid rgba(125, 211, 252, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            max-height: 250px;
+            overflow-y: auto;
+            z-index: 99; 
+            display: none; 
+            flex-direction: column;
+        }
+
+        .custom-select.open .custom-options {
+            display: flex; 
+        }
+
+        .optgroup-label {
+            padding: 10px 15px;
+            font-size: 0.75rem;
+            color: #7dd3fc;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.03);
+            text-transform: uppercase;
+        }
+
+        .custom-option {
+            padding: 12px 25px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .custom-option:hover {
+            background: rgba(125, 211, 252, 0.1);
             color: #ffffff;
         }
+
+        .custom-option.selected {
+            background: rgba(125, 211, 252, 0.2);
+            color: #7dd3fc;
+            font-weight: 600;
+        }
+
+        .custom-options::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-options::-webkit-scrollbar-thumb {
+            background: rgba(125, 211, 252, 0.3);
+            border-radius: 10px;
+        }
+        /* --- GAYA CUSTOM DROPDOWN SELESAI --- */
 
         /* Gaya untuk kotak pembungkus Add-ons */
         .addons-container {
@@ -121,10 +200,10 @@
         .addon-item {
             display: flex;
             align-items: center;
-            color: #cbd5e1 !important; /* Warna abu-abu terang */
+            color: #cbd5e1 !important;
             font-size: 0.85rem !important;
             cursor: pointer;
-            margin: 0 !important; /* Mereset margin label bawaan */
+            margin: 0 !important;
         }
 
         /* Mewarnai kotak checkbox dengan aksen biru */
@@ -135,7 +214,6 @@
             height: 18px;
             cursor: pointer;
         }
-        label { display: block; margin-bottom: 6px; font-size: 0.85rem; color: #7dd3fc; }
 
         input, textarea {
             width: 100%;
@@ -200,7 +278,6 @@
             transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
         }
 
-        /* Tombol Kembali pindah ke bawah, margin disesuaikan */
         .back-btn {
             display: flex;
             width: fit-content;
@@ -231,46 +308,47 @@
         .footer { margin-top: 30px; font-size: 0.85rem; color: #94a3b8; letter-spacing: 1px; line-height: 1.6; text-align: center; }
         .footer span { color: #7dd3fc; font-weight: 600; font-size: 0.9rem; }
         .footer-copyright { font-size: 0.7rem; margin-top: 8px; color: #64748b; }
-    /* Style untuk Kotak Term & Condition */
+        
+        /* Style untuk Kotak Term & Condition */
         .tnc-box {
-            background: rgba(0, 0, 0, 0.3); /* Latar belakang lebih gelap agar teks mudah dibaca */
+            background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(125, 211, 252, 0.15);
             border-radius: 15px;
             padding: 20px;
             margin-top: 25px;
             margin-bottom: 25px;
-            text-align: left; /* Teks rata kiri agar rapi untuk dibaca */
+            text-align: left;
         }
 
-        /* Khusus untuk judul Term & Condition agar persis seperti gambar */
         .tnc-box h3 {
-            font-family: 'Georgia', 'Times New Roman', serif; /* Menggunakan font klasik berukir */
-            font-style: italic; /* Membuat hurufnya miring */
-            font-size: 1.6rem; /* Ukuran agak dibesarkan sedikit agar proporsional */
-            color: #7dd3fc; /* Mengubah warnanya menjadi putih seperti di gambar */
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.6rem;
+            color: #7dd3fc;
             margin-bottom: 15px;
             text-align: center;
-            font-weight: normal; /* Dibuat normal (tidak tebal/bold) seperti di gambar */
+            font-weight: normal;
             letter-spacing: 1px;
             text-transform: none; 
         }
+        
         .tnc-subtitle {
-            color: #ffffff; /* Warna teks putih bersih */
-            font-size: 0.8rem; /* Ukuran teks agak kecil */
-            text-align: center; /* Rata tengah mengikuti judulnya */
-            margin-top: -5px; /* Menaikkan sedikit agar menempel dengan judul Term & Condition */
-            margin-bottom: 15px; /* Jarak ke teks bullet point di bawahnya */
+            color: #ffffff;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: -5px;
+            margin-bottom: 15px;
             font-weight: 400;
             letter-spacing: 1px;
         }
 
         .tnc-box ul {
-            padding-left: 20px; /* Memberi jarak untuk bullet point */
+            padding-left: 20px;
             color: #cbd5e1;
         }
 
         .tnc-box li {
-            font-size: 0.75rem; /* Ukuran font agak kecil agar tidak makan tempat */
+            font-size: 0.75rem;
             line-height: 1.6;
             margin-bottom: 10px;
             font-weight: 300;
@@ -296,58 +374,63 @@
         <label>No Handphone / Whatsapp :</label>
         <input type="tel" id="whatsapp" placeholder="Contoh: 08123456789" required>
     </div>
-<div class="form-group">
-            <label for="package">Pilihan Package</label>
-            <select id="package" name="package" class="form-control" required>
-                <option value="" disabled selected>-- Pilih Package Anda --</option>
-                
-                <optgroup label="ONE DAY WEDDING PHOTO - VIDEO PACKAGE">
-                    <option value="Wedding - Intimate">INTIMATE</option>
-                    <option value="Wedding - Majestic">MAJESTIC</option>
-                    <option value="Wedding - Royal">ROYAL</option>
-                    <option value="Wedding - Grande">GRANDE</option>
-                </optgroup>
+    
+    <div class="form-group custom-dropdown-container">
+        <label>Pilihan Package</label>
+        
+        <input type="hidden" id="package" name="package" value="">
 
-                <optgroup label="COUPLE SESSION (Foto)">
-                    <option value="Couple Foto - Basic">Basic</option>
-                    <option value="Couple Foto - Standart">Standart</option>
-                </optgroup>
+        <div class="custom-select" id="customSelect">
+            <div class="select-trigger" id="selectTrigger">
+                <span>-- Pilih Package Anda --</span>
+                <div class="arrow"></div>
+            </div>
+            
+            <div class="custom-options" id="customOptions">
+                <div class="optgroup-label">ONE DAY WEDDING PHOTO - VIDEO PACKAGE</div>
+                <div class="custom-option" data-value="Wedding - Intimate">INTIMATE</div>
+                <div class="custom-option" data-value="Wedding - Majestic">MAJESTIC</div>
+                <div class="custom-option" data-value="Wedding - Royal">ROYAL</div>
+                <div class="custom-option" data-value="Wedding - Grande">GRANDE</div>
 
-                <optgroup label="COUPLE SESSION (Video)">
-                    <option value="Couple Video - Basic">Basic</option>
-                    <option value="Couple Video - Standart">Standart</option>
-                </optgroup>
+                <div class="optgroup-label">COUPLE SESSION (Foto)</div>
+                <div class="custom-option" data-value="Couple Foto - Basic">Basic</div>
+                <div class="custom-option" data-value="Couple Foto - Standart">Standart</div>
 
-                <optgroup label="COUPLE SESSION (Foto & Video)">
-                    <option value="Couple Foto&Video - Basic">Basic</option>
-                    <option value="Couple Foto&Video - Standart">Standart</option>
-                </optgroup>
-            </select>
-        </div>
+                <div class="optgroup-label">COUPLE SESSION (Video)</div>
+                <div class="custom-option" data-value="Couple Video - Basic">Basic</div>
+                <div class="custom-option" data-value="Couple Video - Standart">Standart</div>
 
-        <div class="form-group">
-            <label>Add-ons (Opsional)</label>
-            <div class="addons-container">
-                 <label class="addon-item">
-                    <input type="checkbox" name="addons" value="Tidak Ada"> Tidak Ada
-                </label>
-                <label class="addon-item">
-                    <input type="checkbox" name="addons" value="Same Day Edit Video"> Same Day Edit Video
-                </label>
-                <label class="addon-item">
-                    <input type="checkbox" name="addons" value="Drone"> Drone
-                </label>
-                <label class="addon-item">
-                    <input type="checkbox" name="addons" value="Portable Studio"> Portable Studio
-                </label>
-                <label class="addon-item">
-                    <input type="checkbox" name="addons" value="Transportasi & Akomodasi"> Transportasi & Akomodasi
-                </label>
-                <label class="addon-item">
-                    <input type="checkbox" name="addons" value="Extra Day"> Extra Day
-                </label>
+                <div class="optgroup-label">COUPLE SESSION (Foto & Video)</div>
+                <div class="custom-option" data-value="Couple Foto&Video - Basic">Basic</div>
+                <div class="custom-option" data-value="Couple Foto&Video - Standart">Standart</div>
             </div>
         </div>
+    </div>
+
+    <div class="form-group">
+        <label>Add-ons (Opsional)</label>
+        <div class="addons-container">
+             <label class="addon-item">
+                <input type="checkbox" name="addons" value="Tidak Ada"> Tidak Ada
+            </label>
+            <label class="addon-item">
+                <input type="checkbox" name="addons" value="Same Day Edit Video"> Same Day Edit Video
+            </label>
+            <label class="addon-item">
+                <input type="checkbox" name="addons" value="Drone"> Drone
+            </label>
+            <label class="addon-item">
+                <input type="checkbox" name="addons" value="Portable Studio"> Portable Studio
+            </label>
+            <label class="addon-item">
+                <input type="checkbox" name="addons" value="Transportasi & Akomodasi"> Transportasi & Akomodasi
+            </label>
+            <label class="addon-item">
+                <input type="checkbox" name="addons" value="Extra Day"> Extra Day
+            </label>
+        </div>
+    </div>
 
     <div class="form-group">
         <label>Tanggal acara :</label>
@@ -358,7 +441,8 @@
         <label>Lokasi acara :</label>
         <textarea id="lokasi" placeholder="Masukkan alamat lengkap / nama gedung" rows="3" required></textarea>
     </div>
-   <div class="tnc-box">
+    
+    <div class="tnc-box">
         <h3>Term & Condition</h3>
         
         <p class="tnc-subtitle">Booking & Payment</p>
@@ -378,53 +462,76 @@
 
     <div class="divider">ATAU</div>
 
-    <a href="https://wa.me/628123456789" target="_blank" class="btn-link">TANYA ADMIN (WHATSAPP)</a>
+    <a href="https://wa.me/62895355510902" target="_blank" class="btn-link">TANYA ADMIN (WHATSAPP)</a>
 
     <a href="index.html" class="back-btn">&#8592; KEMBALI KE BERANDA</a>
 
     <div class="footer">
-    <p class="footer-copyright">© 2026 ALFARISY. All Rights Reserved.</p>
+        <p class="footer-copyright">© 2026 ALFARISY. All Rights Reserved.</p>
     </div>
 </div>
 
 <script>
+    // --- SCRIPT UNTUK CUSTOM DROPDOWN ---
+    document.addEventListener("DOMContentLoaded", function() {
+        const customSelect = document.getElementById('customSelect');
+        const selectTrigger = document.getElementById('selectTrigger');
+        const customOptions = document.querySelectorAll('.custom-option');
+        const hiddenInput = document.getElementById('package'); 
+        const triggerText = selectTrigger.querySelector('span');
+
+        selectTrigger.addEventListener('click', function(e) {
+            customSelect.classList.toggle('open');
+            e.stopPropagation(); 
+        });
+
+        customOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                customOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                triggerText.textContent = this.textContent;
+                hiddenInput.value = this.getAttribute('data-value');
+                customSelect.classList.remove('open');
+                e.stopPropagation();
+            });
+        });
+
+        document.addEventListener('click', function() {
+            customSelect.classList.remove('open');
+        });
+    });
+
+    // --- SCRIPT UNTUK WHATSAPP ---
     function kirimWA() {
-        // 1. Mengambil data dari form teks dan dropdown
         const mempelai = document.getElementById('mempelai').value;
         const whatsapp = document.getElementById('whatsapp').value;
         const paket = document.getElementById('package').value;
         const tanggal = document.getElementById('tanggal').value;
         const lokasi = document.getElementById('lokasi').value;
 
-        // 2. MENGAMBIL DATA ADD-ONS (KODE BARU)
         const checkedAddons = document.querySelectorAll('input[name="addons"]:checked');
         let addonsArray = [];
         checkedAddons.forEach((checkbox) => {
             addonsArray.push(checkbox.value);
         });
-        // Jika ada yang dicentang, gabungkan. Jika kosong, tulis "Tidak ada"
         const addonsText = addonsArray.length > 0 ? addonsArray.join(', ') : 'Tidak ada';
 
-        // Nomor WA Admin
         const nomorAdmin = "62895355510902"; 
 
-        // 3. Validasi form (Add-ons tidak ikut divalidasi karena opsional)
         if (!mempelai || !whatsapp || !paket || !tanggal || !lokasi) {
-            alert("Mohon lengkapi semua data formulir sebelum mengirim pesan.");
+            alert("Mohon lengkapi semua data formulir sebelum mengirim pesan. Pastikan Package juga sudah dipilih.");
             return;
         }
 
-        // 4. Merangkai pesan WhatsApp (Menambahkan baris Add-ons)
         const teks = `Halo ALFARISY, saya ingin booking layanan fotografi:\n\n` +
                      `*Nama kedua mempelai :* ${mempelai}\n` +
                      `*No Handphone / Whatsapp :* ${whatsapp}\n` +
                      `*Pilihan package :* ${paket}\n` +
-                     `*Add-ons Tambahan :* ${addonsText}\n` +   /* BARIS BARU DI SINI */
+                     `*Add-ons Tambahan :* ${addonsText}\n` +   
                      `*Tanggal acara :* ${tanggal}\n` +
                      `*Lokasi acara :* ${lokasi}`;
 
-        // 5. Mengirim pesan (Saya rapikan sedikit menggunakan variabel nomorAdmin)
-        const url = `https://wa.me/${62895355510902}?text=${encodeURIComponent(teks)}`;
+        const url = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(teks)}`;
         
         window.open(url, '_blank');
     }
